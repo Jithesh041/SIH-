@@ -85,6 +85,10 @@ The API runs at `http://127.0.0.1:8000`; interactive API docs are at `/docs`. Th
 
 Backend API groups are `/api/batches`, `/api/admin`, `/api/benchmark`, and `/api/verify`. Synthetic CSV fixtures and generation scripts are in `backend/data` and `backend/scripts`.
 
+### Demo intake replay
+
+The 135-row over-intake scenario expects 120 accepted and 15 rejected when Apex Institute starts at 0/120. Accepted records persist and count toward the sanctioned capacity, so uploading the same file again can correctly reject every row. Use **Reset Demo Baseline** in the Institute workspace before replaying the scenario. The backend also ignores capacity consumption from rows already blocked by another validation rule.
+
 ## Validation
 
 Backend tests are configured with `pytest` from `backend/`. Frontend production compilation, lint, and TypeScript checks run as part of `npm run build` from `frontend/`.

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Activity, AlertCircle, ArrowDown, ArrowRight, ArrowUpRight, Building2, Check, Clock, FileCheck, Fingerprint, Landmark, Lock, Mail, ShieldAlert, ShieldCheck, UserCheck } from "lucide-react";
+import { AlertCircle, ArrowRight, ArrowUpRight, Building2, Clock, ExternalLink, FileCheck, Fingerprint, Landmark, Lock, Mail, ShieldAlert, ShieldCheck, UserCheck } from "lucide-react";
 import { AnimatedRoleList, type RoleListOption } from "@/components/ui/animated-role-list";
 
 type RoleOption = "aicte_admin" | "institution" | "verifier";
@@ -51,31 +51,24 @@ export default function LoginPage() {
   };
 
   return <div className="landing-shell">
+    <div className="government-bar"><div className="page-container government-bar-inner"><div className="government-context"><span className="tricolor-mark" aria-hidden="true"><i /><i /><i /></span><strong>SMART INDIA HACKATHON</strong><span className="gov-divider" /> <span>AICTE · APAAR RegTech prototype</span></div><nav aria-label="Utility links"><a href="#compliance"><AlertCircle className="h-3.5 w-3.5" /> Important note</a><a href="#portal">Help &amp; access <ExternalLink className="h-3 w-3" /></a><span className="language-chip">EN <span aria-hidden="true">⌄</span></span></nav></div></div>
     <header className="landing-header">
-      <a href="#overview" className="brand-lockup" aria-label="AICTE SIH 2026 home"><span className="brand-mark"><ShieldCheck className="h-5 w-5" /></span><span className="brand-copy"><span className="brand-title">AICTE <i>|</i> SIH 2026</span><span className="brand-subtitle">APAAR RegTech</span></span></a>
-      <nav className="landing-nav" aria-label="Main navigation"><a href="#overview">Overview</a><a href="#compliance">Compliance</a><a href="#portal">Portal</a><a href="#portal" className="nav-access">Access portal <ArrowUpRight className="h-4 w-4" /></a></nav>
+      <a href="#overview" className="brand-lockup" aria-label="AICTE APAAR RegTech home"><span className="ministry-mark" aria-hidden="true"><Landmark className="h-5 w-5" /></span><span className="ministry-copy"><strong>MINISTRY OF EDUCATION</strong><small>AICTE · SIH 2026 prototype</small></span><span className="brand-divider" aria-hidden="true" /><span className="brand-mark"><ShieldCheck className="h-5 w-5" /></span><span className="brand-copy"><span className="brand-title">AICTE <i>APAAR REGTECH</i></span><span className="brand-subtitle">Academic governance · SIH 2026 prototype</span></span></a>
+      <a href="#portal" className="nav-access specular-button">Explore portal <ArrowRight className="h-4 w-4" /></a>
     </header>
+    <div className="status-strip"><div className="page-container status-strip-inner"><span className="status-live">DEMO</span><span>Institutional enrolment review · Capacity validation · Privacy-preserving verification</span><span className="status-cycle">ACADEMIC YEAR 2026–27</span></div></div>
 
     <main>
       <section id="overview" className="hero-section scroll-mt-24">
         <div className="hero-backdrop" aria-hidden="true"><div className="hero-glow" /></div>
         <div className="hero-content page-container">
-          <div className="hero-copy"><div className="eyebrow"><span className="eyebrow-dot" /> SMART INDIA HACKATHON 2026 <i>/</i> APAAR REGTECH</div>
-            <h1 className="blur-reveal">Trustworthy student records.<br /><span>Verified with care.</span></h1>
-            <p className="hero-description">A secure regulatory workspace for enrolment validation, intake compliance and privacy-preserving verification.</p>
-            <div className="hero-actions"><a href="#compliance" className="button-primary specular-button">Explore the platform <ArrowRight className="h-4 w-4" /></a><a href="#portal" className="button-secondary">Access portal <ArrowUpRight className="h-4 w-4" /></a></div>
-            <div className="trust-chips"><span><Lock className="h-3.5 w-3.5" /> Privacy-first</span><span><Landmark className="h-3.5 w-3.5" /> Intake-aware</span><span><FileCheck className="h-3.5 w-3.5" /> Audit-ready</span></div>
-          </div>
-          <div className="hero-visual" aria-label="Illustration of the verified regulatory workspace"><div className="visual-orbit orbit-one" /><div className="visual-orbit orbit-two" />
-            <div className="visual-card glass-panel tilt-card"><div className="visual-sidebar"><span className="visual-side-icon active"><Landmark className="h-4 w-4" /></span><span className="visual-side-icon"><Activity className="h-4 w-4" /></span><span className="visual-side-icon"><FileCheck className="h-4 w-4" /></span><span className="visual-side-icon"><ShieldCheck className="h-4 w-4" /></span></div>
-              <div className="visual-main"><div className="visual-topline"><span>REGULATORY WORKSPACE</span><span className="live-indicator"><i /> LIVE</span></div><div className="visual-shield"><ShieldCheck className="h-12 w-12" /></div>
-                <svg className="visual-trend" viewBox="0 0 360 130" fill="none" aria-hidden="true"><path d="M0 100 C38 96 42 60 80 68 S121 98 154 75 194 31 224 51 262 85 291 48 329 53 360 15" stroke="url(#trend-gradient)" strokeWidth="2.5" /><path d="M0 100 C38 96 42 60 80 68 S121 98 154 75 194 31 224 51 262 85 291 48 329 53 360 15 V130 H0Z" fill="url(#area-gradient)" opacity=".42" /><defs><linearGradient id="trend-gradient" x1="0" y1="0" x2="360" y2="0"><stop stopColor="#A78BFA" /><stop offset="1" stopColor="#67E8F9" /></linearGradient><linearGradient id="area-gradient" x1="180" y1="15" x2="180" y2="130"><stop stopColor="#8B5CF6" /><stop offset="1" stopColor="#8B5CF6" stopOpacity="0" /></linearGradient></defs></svg>
-                <div className="visual-status-row"><span><Check className="h-3.5 w-3.5" /> Intake validated</span><span><Check className="h-3.5 w-3.5" /> Records protected</span><span><Check className="h-3.5 w-3.5" /> Audit trail ready</span></div>
-              </div>
-            </div><div className="visual-caption"><i /> Privacy-preserving by design</div>
+          <div className="hero-copy"><div className="eyebrow hero-eyebrow"><span className="eyebrow-dot" /> NATIONAL REGULATORY INTELLIGENCE PORTAL <i /> AY 2026–27</div>
+            <h1 className="blur-reveal">Institutional approval &amp; regulatory scrutiny <span>verified with care.</span></h1>
+            <p className="hero-description">Validate enrolment submissions, review sanctioned intake, and support secure student-record verification in one accountable workspace.</p>
+            <div className="hero-portal-card glass-panel tilt-card"><div className="hero-card-actions"><a href="#compliance" className="button-secondary"><Landmark className="h-4 w-4" /> Explore the framework <ArrowRight className="h-4 w-4" /></a><a href="#portal" className="button-primary specular-button">Access demo portal <ArrowRight className="h-4 w-4" /></a></div><div className="quick-access"><strong>QUICK ACCESS</strong><a href="#portal"><Building2 className="h-3.5 w-3.5" /> Institution workspace</a><a href="#compliance"><FileCheck className="h-3.5 w-3.5" /> Compliance architecture</a><a href="#portal"><ShieldCheck className="h-3.5 w-3.5" /> Verification gateway</a></div></div>
+            <div className="trust-chips"><span><Lock className="h-3.5 w-3.5" /> Privacy-first design</span><span><Landmark className="h-3.5 w-3.5" /> Sanctioned-intake checks</span><span><FileCheck className="h-3.5 w-3.5" /> Traceable review</span></div>
           </div>
         </div>
-        <a href="#compliance" className="scroll-cue" aria-label="Scroll to compliance architecture"><span>Scroll to explore</span><ArrowDown className="h-4 w-4" /></a>
       </section>
 
       <section id="compliance" className="compliance-section scroll-mt-24"><div className="page-container">

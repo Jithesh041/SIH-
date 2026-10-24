@@ -163,6 +163,55 @@ def test_cap_001_over_intake_boundary_api(
     assert len(promoted) == 3
 
 
+def test_invalid_row_does_not_consume_capacity(
+    client: TestClient,
+    db_session: Session,
+    test_setup: dict,
+) -> None:
+    """A row rejected for invalid APAAR must not use the only approved seat."""
+    inst_a = test_setup["inst_a"]
+    test_setup["intake_a"].approved_capacity = 1
+    db_session.flush()
+
+    rows = [
+        {
+            "apaar_id": "not-a-valid-id",
+            "full_name": "Invalid APAAR Applicant",
+            "gender": "female",
+            "programme_code": "BTECH-CSE",
+            "academic_year": "2026-2027",
+            "admission_category": "general",
+            "start_date": "2026-08-01",
+        },
+        {
+            "apaar_id": MockApaarServiceAdapter.generate_valid_apaar_id(seed=32000000002),
+            "full_name": "Valid Applicant",
+            "gender": "female",
+            "programme_code": "BTECH-CSE",
+            "academic_year": "2026-2027",
+            "admission_category": "general",
+            "start_date": "2026-08-01",
+        },
+    ]
+
+    response = client.post(
+        "/api/batches/upload",
+        data={"institution_id": str(inst_a.id)},
+        files={"file": ("invalid_then_valid.csv", _build_csv_data(rows), "text/csv")},
+    )
+
+    assert response.status_code == 201
+    data = response.json()
+    assert data["accepted_rows"] == 1
+    assert data["rejected_rows"] == 1
+    assert data["flagged_rows"] == 0
+    batch_id = uuid.UUID(data["batch_id"])
+    violations = db_session.scalars(
+        select(ValidationResult).where(ValidationResult.batch_id == batch_id)
+    ).all()
+    assert any(result.row_index == 1 and result.rule_code == "APR-002" for result in violations)
+    assert not any(result.row_index == 2 and result.rule_code == "CAP-001" for result in violations)
+
 def test_dup_002_cross_institution_enrolment_conflict_api(
     client: TestClient,
     db_session: Session,

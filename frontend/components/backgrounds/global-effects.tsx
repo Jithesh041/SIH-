@@ -2,11 +2,15 @@
 
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 
 const MicroSlats = dynamic(() => import("@/components/backgrounds/micro-slats"), { ssr: false });
 const revealSelector = ".blur-reveal, .workspace-main h1, .workspace-main h2, .workspace-main h3";
 
 export function GlobalEffects() {
+  const pathname = usePathname();
+  const isLanding = pathname === "/login" || pathname === "/";
+
   useEffect(() => {
     const observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -45,7 +49,7 @@ export function GlobalEffects() {
     return () => { mutations.disconnect(); observer?.disconnect(); };
   }, []);
 
-  return <div className="global-effects" aria-hidden="true"><MicroSlats className="global-micro-slats" preset="tide" color="#8B5CF6" glintColor="#E9D5FF" backgroundColor="rgba(0, 0, 0, 0)" slatWidth={7} slatHeight={16} gap={3} speed={0.22} scale={1.5} glint={0.28} fog={0.9} perspective={0.48} interactive cursorStrength={0.3} cursorSize={34} trail={1.1} lean={0.12} intro introDuration={1.5} /></div>;
+  return <div className="global-effects" aria-hidden="true"><MicroSlats className="global-micro-slats" preset="tide" color={isLanding ? "#D99A28" : "#8B5CF6"} glintColor={isLanding ? "#F7E2A6" : "#E9D5FF"} backgroundColor="rgba(0, 0, 0, 0)" slatWidth={7} slatHeight={16} gap={3} speed={isLanding ? 0.16 : 0.22} scale={1.5} glint={0.28} fog={0.9} perspective={0.48} interactive cursorStrength={0.3} cursorSize={34} trail={1.1} lean={0.12} intro introDuration={1.5} /></div>;
 }
 
 

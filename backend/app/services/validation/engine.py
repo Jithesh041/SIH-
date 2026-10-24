@@ -290,7 +290,15 @@ class ValidationEngine:
                 key = (prog.id, academic_year.strip())
                 current_reg, current_nri = self._get_active_counts(prog.id, academic_year)
 
-                if category in REGULAR_CATEGORIES:
+                # Rows that already have a blocking validation error cannot be
+                # admitted, so they must not consume a seat or cause a later
+                # valid row in this batch to be rejected for capacity.
+                has_prior_blocking = any(
+                    violation.severity == ValidationSeverity.blocking
+                    for violation in violations
+                )
+
+                if category in REGULAR_CATEGORIES and not has_prior_blocking:
                     self._total_regular_attempts[key] += 1
                     attempted = self._total_regular_attempts[key]
                     cap_001 = validate_cap_001(
@@ -302,7 +310,7 @@ class ValidationEngine:
                     if cap_001:
                         violations.append(cap_001)
 
-                elif category == AdmissionCategory.nri:
+                elif category == AdmissionCategory.nri and not has_prior_blocking:
                     self._total_nri_attempts[key] += 1
                     attempted_nri = self._total_nri_attempts[key]
                     cap_002 = validate_cap_002(
