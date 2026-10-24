@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import { AppHeader } from "@/components/layout/app-header";
 import {
   ShieldCheck,
   ShieldAlert,
@@ -101,8 +102,7 @@ export default function VerifierGatewayPage({
     setTimeout(() => setCopiedHash(false), 2000);
   };
 
-  return (
-    <div className="min-h-screen bg-transparent flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 font-sans">
+  return (<><AppHeader /><main className="workspace-main min-h-screen bg-transparent flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 font-sans">
       {/* Isolated Purpose-Bound Gateway Container */}
       <div className="w-full max-w-xl">
         {/* Gateway Brand Header */}
@@ -119,7 +119,7 @@ export default function VerifierGatewayPage({
         </div>
 
         {loading ? (
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded p-12 text-center shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded p-12 text-center shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             <RefreshCw className="w-8 h-8 animate-spin text-violet-200 mx-auto mb-3" />
             <h3 className="text-sm font-semibold text-white">
               Verifying Cryptographic Assertion...
@@ -130,7 +130,7 @@ export default function VerifierGatewayPage({
           </div>
         ) : !data || !data.valid ? (
           /* Invalid / Expired / Revoked Card */
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             <div className="p-6 text-center border-b border-violet-200/10 bg-rose-400/10">
               <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#B91C1C] text-white font-mono font-bold text-xs uppercase tracking-wider mb-2">
                 <ShieldAlert className="w-4 h-4 mr-1.5" />
@@ -156,7 +156,7 @@ export default function VerifierGatewayPage({
           </div>
         ) : (
           /* Verified Assertion Card */
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             {/* Prominent Verification Badge */}
             <div className="p-6 text-center border-b border-violet-200/10 bg-emerald-400/10">
               <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#15803D] text-white font-mono font-bold text-xs uppercase tracking-wider shadow-xs">
@@ -215,7 +215,7 @@ export default function VerifierGatewayPage({
                 <div className="sm:col-span-2 pt-2 border-t border-violet-200/[0.08]">
                   <span className="text-slate-400 block mb-0.5">Verified Status:</span>
                   <span className="inline-flex items-center text-xs font-semibold text-emerald-200 bg-emerald-400/10 border border-emerald-300/25 px-2.5 py-0.5 rounded font-mono">
-                    ✓ {data.assertion?.enrolment_status}
+                    âœ“ {data.assertion?.enrolment_status}
                   </span>
                 </div>
               </div>
@@ -295,8 +295,7 @@ export default function VerifierGatewayPage({
           <div className="text-[11px]">
             Statutory Body Under Ministry of Education, Govt. of India
           </div>
-        </div>
-      </div>
-    </div>
-  );
+        </div>      </div>
+      </main></>);
 }
+

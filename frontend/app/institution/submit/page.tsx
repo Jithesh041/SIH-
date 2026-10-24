@@ -269,7 +269,7 @@ export default function SubmissionWorkspacePage() {
     <div className="min-h-screen bg-transparent">
       <AppHeader />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 workspace-main workspace-main">
         {/* Page Title & Breadcrumb */}
         <div className="mb-6">
           <div className="flex items-center space-x-2 text-xs font-mono uppercase text-slate-400 mb-1">
@@ -332,14 +332,14 @@ export default function SubmissionWorkspacePage() {
         </div>
 
         {/* 3-Stage Progress Header */}
-        <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 mb-6 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+        <div className="glass-panel rounded p-4 mb-6 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Stage 1 */}
             <div
               className={`flex items-center space-x-3 p-2 rounded ${
                 !selectedFile
                   ? "bg-violet-400/10 border border-violet-200/20"
-                  : "bg-white/[0.035] border border-violet-200/10"
+                  : "glass-control"
               }`}
             >
               <div
@@ -349,7 +349,7 @@ export default function SubmissionWorkspacePage() {
                     : "bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white"
                 }`}
               >
-                {selectedFile ? "✓" : "1"}
+                {selectedFile ? "âœ“" : "1"}
               </div>
               <div>
                 <div className="text-xs font-semibold text-white">
@@ -366,7 +366,7 @@ export default function SubmissionWorkspacePage() {
               className={`flex items-center space-x-3 p-2 rounded ${
                 isProcessing
                   ? "bg-violet-400/10 border border-violet-200/20"
-                  : "bg-white/[0.035] border border-violet-200/10"
+                  : "glass-control"
               }`}
             >
               <div
@@ -389,7 +389,7 @@ export default function SubmissionWorkspacePage() {
             </div>
 
             {/* Stage 3 */}
-            <div className="flex items-center space-x-3 p-2 rounded bg-white/[0.035] border border-violet-200/10">
+            <div className="flex items-center space-x-3 p-2 rounded glass-control">
               <div className="w-7 h-7 rounded flex items-center justify-center font-mono text-xs font-bold bg-white/10 text-slate-400">
                 3
               </div>
@@ -491,7 +491,7 @@ export default function SubmissionWorkspacePage() {
         ) : (
           <div className="space-y-6">
             {/* Selected File Summary Card */}
-            <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 flex items-center justify-between shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+            <div className="glass-panel rounded p-4 flex items-center justify-between shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
               <div className="flex items-center space-x-3">
                 <div className="p-2.5 bg-violet-400/10 border border-violet-200/20 rounded">
                   <FileSpreadsheet className="w-6 h-6 text-violet-200" />
@@ -512,11 +512,11 @@ export default function SubmissionWorkspacePage() {
                     Schema status:{" "}
                     {missingHeaders.length === 0 ? (
                       <span className="text-emerald-200 font-medium">
-                        ✓ All mandatory headers present
+                        âœ“ All mandatory headers present
                       </span>
                     ) : (
                       <span className="text-rose-200 font-medium">
-                        ⚠ Missing {missingHeaders.length} mandatory header(s)
+                        âš  Missing {missingHeaders.length} mandatory header(s)
                       </span>
                     )}
                   </div>
@@ -556,7 +556,7 @@ export default function SubmissionWorkspacePage() {
 
             {/* Processing Progress Bar */}
             {isProcessing && (
-              <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+              <div className="glass-panel rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-xs font-semibold text-white flex items-center">
                     <RefreshCw className="w-3.5 h-3.5 mr-1.5 animate-spin text-violet-200" />
@@ -576,7 +576,7 @@ export default function SubmissionWorkspacePage() {
             )}
 
             {/* Client-Side Schema Pre-Check Preview Table */}
-            <div className="bg-white/[0.045] border border-violet-200/10 rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+            <div className="glass-panel rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
               <div className="px-4 py-3 border-b border-violet-200/10 bg-white/[0.035] flex items-center justify-between">
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-white">
@@ -587,7 +587,7 @@ export default function SubmissionWorkspacePage() {
                   </p>
                 </div>
                 <span className="text-xs font-mono text-slate-400">
-                  Showing 1–{preCheckRows.length} of {totalParsedRows} records
+                  Showing 1-{preCheckRows.length} of {totalParsedRows} records
                 </span>
               </div>
 
@@ -687,3 +687,9 @@ export default function SubmissionWorkspacePage() {
     </div>
   );
 }
+
+
+
+
+
+

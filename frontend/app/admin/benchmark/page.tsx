@@ -103,7 +103,7 @@ export default function BenchmarkDashboardPage() {
     <div className="min-h-screen bg-transparent">
       <AppHeader />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 workspace-main workspace-main">
         {/* Breadcrumb & Header */}
         <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
@@ -160,13 +160,13 @@ export default function BenchmarkDashboardPage() {
         {/* Top 4 KPI Summary Strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           {/* Card 1: Precision */}
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold mb-1 flex items-center justify-between">
               <span>Macro Precision</span>
               <Target className="w-4 h-4 text-emerald-200" />
             </div>
             <div className="text-2xl font-extrabold text-emerald-200 font-mono">
-              {summary ? `${summary.macro_precision}%` : "—"}
+              {summary ? `${summary.macro_precision}%` : "--"}
             </div>
             <div className="text-[11px] text-slate-400 mt-1">
               Zero false positive rejections
@@ -174,13 +174,13 @@ export default function BenchmarkDashboardPage() {
           </div>
 
           {/* Card 2: Recall */}
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold mb-1 flex items-center justify-between">
               <span>Macro Recall</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-200" />
             </div>
             <div className="text-2xl font-extrabold text-emerald-200 font-mono">
-              {summary ? `${summary.macro_recall}%` : "—"}
+              {summary ? `${summary.macro_recall}%` : "--"}
             </div>
             <div className="text-[11px] text-slate-400 mt-1">
               100% boundary violations caught
@@ -188,7 +188,7 @@ export default function BenchmarkDashboardPage() {
           </div>
 
           {/* Card 3: False Positive Rate */}
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold mb-1 flex items-center justify-between">
               <span>False Positive Rate</span>
               <ShieldAlert className="w-4 h-4 text-violet-200" />
@@ -202,13 +202,13 @@ export default function BenchmarkDashboardPage() {
           </div>
 
           {/* Card 4: Throughput */}
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold mb-1 flex items-center justify-between">
               <span>Ingestion Speed</span>
               <Zap className="w-4 h-4 text-amber-300" />
             </div>
             <div className="text-2xl font-extrabold text-white font-mono">
-              {summary ? `${summary.throughput_records_per_sec.toLocaleString()}` : "—"}
+              {summary ? `${summary.throughput_records_per_sec.toLocaleString()}` : "--"}
             </div>
             <div className="text-[11px] text-slate-400 mt-1">
               Records / second processing
@@ -217,7 +217,7 @@ export default function BenchmarkDashboardPage() {
         </div>
 
         {/* Benchmark Scenario Matrix Table */}
-        <div className="bg-white/[0.045] border border-violet-200/10 rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+        <div className="glass-panel rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
           <div className="px-4 py-3 border-b border-violet-200/10 bg-white/[0.035] flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Activity className="w-4 h-4 text-violet-200" />
@@ -401,7 +401,7 @@ export default function BenchmarkDashboardPage() {
               {/* Body */}
               <div className="flex-1 overflow-y-auto p-6 space-y-6 text-xs">
                 {/* Benchmark Specifications */}
-                <div className="bg-white/[0.035] border border-violet-200/10 rounded p-4 space-y-2.5">
+                <div className="glass-control rounded p-4 space-y-2.5">
                   <div className="text-[11px] font-mono uppercase font-bold text-slate-400">
                     Scenario Specifications
                   </div>
@@ -431,25 +431,25 @@ export default function BenchmarkDashboardPage() {
                     Detection Accuracy Breakdown
                   </div>
                   <div className="grid grid-cols-2 gap-3 font-mono">
-                    <div className="p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
+                    <div className="glass-control p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
                       <div className="text-[10px] text-slate-400 uppercase">Precision</div>
                       <div className="text-lg font-bold text-emerald-200">
                         {(selectedScenario.precision * 100).toFixed(1)}%
                       </div>
                     </div>
-                    <div className="p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
+                    <div className="glass-control p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
                       <div className="text-[10px] text-slate-400 uppercase">Recall</div>
                       <div className="text-lg font-bold text-emerald-200">
                         {(selectedScenario.recall * 100).toFixed(1)}%
                       </div>
                     </div>
-                    <div className="p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
+                    <div className="glass-control p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
                       <div className="text-[10px] text-slate-400 uppercase">Accepted Rows</div>
                       <div className="text-lg font-bold text-white">
                         {selectedScenario.actual_accepted}
                       </div>
                     </div>
-                    <div className="p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
+                    <div className="glass-control p-2.5 bg-white/[0.035] rounded border border-violet-200/10">
                       <div className="text-[10px] text-slate-400 uppercase">Blocked Rows</div>
                       <div className="text-lg font-bold text-rose-200">
                         {selectedScenario.actual_rejected}
@@ -481,7 +481,7 @@ export default function BenchmarkDashboardPage() {
                 </div>
 
                 {/* Throughput & Latency */}
-                <div className="bg-white/[0.035] border border-violet-200/10 rounded p-4 font-mono space-y-1">
+                <div className="glass-control rounded p-4 font-mono space-y-1">
                   <div className="flex justify-between text-slate-300">
                     <span>Latency:</span>
                     <span className="font-bold text-slate-100">{selectedScenario.duration_ms} ms</span>
@@ -509,3 +509,9 @@ export default function BenchmarkDashboardPage() {
     </div>
   );
 }
+
+
+
+
+
+

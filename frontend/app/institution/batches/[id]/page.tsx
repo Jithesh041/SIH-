@@ -175,7 +175,7 @@ export default function BatchRemediationConsolePage({
       <div className="min-h-screen bg-transparent">
         <AppHeader />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="max-w-lg mx-auto bg-white/[0.045] border border-rose-300/25 rounded p-6 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)] text-center">
+          <div className="glass-panel max-w-lg mx-auto bg-white/[0.045] border border-rose-300/25 rounded p-6 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)] text-center">
             <XCircle className="w-10 h-10 text-rose-200 mx-auto mb-3" />
             <h2 className="text-base font-bold text-white mb-1">
               Unable to Retrieve Batch Record
@@ -198,7 +198,7 @@ export default function BatchRemediationConsolePage({
     <div className="min-h-screen bg-transparent">
       <AppHeader />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 workspace-main">
         {/* Navigation Breadcrumb & Title */}
         <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
@@ -217,7 +217,7 @@ export default function BatchRemediationConsolePage({
             </div>
             <div className="text-xs text-slate-400 mt-1 font-mono flex items-center space-x-3">
               <span>File: {batch.original_filename}</span>
-              <span>•</span>
+              <span> | </span>
               <span>Submitted: {batch.created_at ? new Date(batch.created_at).toLocaleString() : "Just now"}</span>
             </div>
           </div>
@@ -226,7 +226,7 @@ export default function BatchRemediationConsolePage({
           <div className="flex items-center space-x-3">
             <Link
               href="/institution/submit"
-              className="inline-flex items-center text-xs font-medium text-slate-200 bg-white/[0.045] hover:bg-white/[0.035] border border-violet-200/10 px-3.5 py-2 rounded transition-colors"
+              className="inline-flex items-center text-xs font-medium text-slate-200 bg-white/[0.045] hover:bg-white/[0.08] px-3.5 py-2 rounded transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
               Upload New Batch
@@ -255,7 +255,7 @@ export default function BatchRemediationConsolePage({
         {/* Top 4 KPI Summary Strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           {/* Card 1: Total Submitted */}
-          <div className="bg-white/[0.045] border border-violet-200/10 rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+          <div className="glass-panel rounded p-4 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold mb-1">
               Total Submitted
             </div>
@@ -311,7 +311,7 @@ export default function BatchRemediationConsolePage({
         </div>
 
         {/* Action & Filter Bar */}
-        <div className="bg-white/[0.045] border border-violet-200/10 rounded p-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+        <div className="glass-panel rounded p-3 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
           {/* Outcome Filter Tabs */}
           <div className="flex items-center space-x-1 bg-white/[0.07] p-1 rounded border border-violet-200/10 text-xs">
             <button
@@ -364,7 +364,7 @@ export default function BatchRemediationConsolePage({
               placeholder="Search student, APAAR, rule..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full text-xs bg-white/[0.035] border border-violet-200/10 rounded pl-9 pr-3 py-2 text-slate-100 focus:outline-hidden focus:border-violet-300/60 focus:bg-white/10 transition-colors"
+              className="w-full text-xs glass-control rounded pl-9 pr-3 py-2 text-slate-100 focus:outline-hidden focus:border-violet-300/60 focus:bg-white/10 transition-colors"
             />
             {searchQuery && (
               <button
@@ -378,7 +378,7 @@ export default function BatchRemediationConsolePage({
         </div>
 
         {/* Virtualized / Inspection Grid Table */}
-        <div className="bg-white/[0.045] border border-violet-200/10 rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
+        <div className="glass-panel rounded overflow-hidden shadow-[0_12px_35px_-20px_rgba(0,0,0,0.85)]">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-violet-200/10 text-xs">
               <thead className="bg-white/[0.08]">
@@ -479,7 +479,7 @@ export default function BatchRemediationConsolePage({
                               {primaryViolation.rule_code}
                             </span>
                           ) : (
-                            <span className="text-slate-400 font-normal">—</span>
+                            <span className="text-slate-400 font-normal">--</span>
                           )}
                         </td>
                         <td className="px-3 py-3 text-slate-200">
@@ -565,7 +565,7 @@ export default function BatchRemediationConsolePage({
               {/* Drawer Body */}
               <div className="flex-1 overflow-y-auto p-6 space-y-6">
                 {/* Enrolment Record Summary */}
-                <div className="bg-white/[0.035] border border-violet-200/10 rounded p-4">
+                <div className="glass-control rounded p-4">
                   <div className="text-[11px] font-mono uppercase font-bold text-slate-400 mb-3 flex items-center">
                     <GraduationCap className="w-4 h-4 mr-1.5 text-slate-300" />
                     Enrolment Specifications
@@ -650,7 +650,7 @@ export default function BatchRemediationConsolePage({
                           </div>
 
                           {/* Actionable Remediation Instruction */}
-                          <div className="mt-3 p-2.5 bg-white/[0.045] rounded border border-violet-200/10">
+                          <div className="glass-panel mt-3 p-2.5 bg-white/[0.045] rounded border border-violet-200/10">
                             <div className="text-[10px] font-mono uppercase font-bold text-slate-400 mb-0.5">
                               Remediation Directive:
                             </div>
@@ -695,3 +695,8 @@ export default function BatchRemediationConsolePage({
     </div>
   );
 }
+
+
+
+
+
